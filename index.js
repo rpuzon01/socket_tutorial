@@ -13,8 +13,9 @@ app.get('/', (req, res, next) => {
 })
 
 io.on('connection', (socket) => {
-	console.dir(socket);
-	console.log('a user connection');
+	socket.on("chat message", (msg) => {
+		console.log("message: " + msg);
+	})
 })
 
 const {PORT} = process.env;
